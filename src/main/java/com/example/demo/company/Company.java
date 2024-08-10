@@ -1,6 +1,21 @@
 package com.example.demo.company;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table
+
 public class Company {
+    @Id
+    @SequenceGenerator(
+            name = "company_sequence",
+            sequenceName="student_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue (
+            strategy = GenerationType.SEQUENCE,
+            generator = "company_sequence"
+    )
     private Long id;
     private String compName;
     private String compEmail;
