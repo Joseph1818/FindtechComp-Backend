@@ -9,7 +9,7 @@ public class Company {
     @Id
     @SequenceGenerator(
             name = "company_sequence",
-            sequenceName="student_sequence",
+            sequenceName ="company_sequence",
             allocationSize = 1
     )
     @GeneratedValue (
