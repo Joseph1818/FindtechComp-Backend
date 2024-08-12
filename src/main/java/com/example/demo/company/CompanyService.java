@@ -2,6 +2,8 @@ package com.example.demo.company;
 
 import jdk.swing.interop.SwingInterOpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +33,15 @@ public class CompanyService {
         }
         companyRepository.save(company);
         System.out.println(company);
+    }
+
+    public boolean deleteCompany(Long companyId) {
+    // Exception to handle if company already exists into database
+       boolean exists = companyRepository.existsById(companyId);
+       if(!exists) {
+           throw new IllegalStateException("Company with id " + companyId + " does not exists");
+        }
+       companyRepository.deleteById(companyId);
+      return true;
     }
 }

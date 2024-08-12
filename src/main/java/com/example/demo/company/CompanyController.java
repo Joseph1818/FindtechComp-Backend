@@ -3,6 +3,7 @@ package com.example.demo.company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -15,17 +16,18 @@ public class CompanyController {
         this.companyService = companyService;
     }
     @GetMapping
-
     //Service layer is responsible for business logic
     public List<Company> getCompanys()
     {
     return companyService.getCompanys();
     }
-
-    //Post methods
-
     @PostMapping
     public void addCompany(@RequestBody Company company) {
         companyService.addCompany(company);
     }
+    @DeleteMapping(path = "{companyId}")
+    public void deleteCompany(@PathVariable("companyId") Long companyId) {
+        companyService.deleteCompany(companyId);
+    }
+
 }
