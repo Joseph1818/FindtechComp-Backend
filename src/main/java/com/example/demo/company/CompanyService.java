@@ -1,6 +1,6 @@
 package com.example.demo.company;
 
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,18 +8,16 @@ import java.util.List;
 
 public class CompanyService {
 
+    private  final CompanyRepository companyRepository;
+    @Autowired
+    public CompanyService(CompanyRepository companyRepository) {
+        this.companyRepository = companyRepository;
+    }
+
+
     public List<Company> getCompanys()
     {
-        return List.of(
-                new Company(
-                        1L,
-                        "Dvt",
-                        "dvt@info.co.za",
-                        "0218298448",
-                        "dvd.com",
-                        "54 Century city boulevard"
-                )
-        );
+    return companyRepository.findAll();
 
     }
 

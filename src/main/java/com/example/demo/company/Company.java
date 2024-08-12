@@ -3,19 +3,21 @@ package com.example.demo.company;
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "company")
+
 
 public class Company {
     @Id
     @SequenceGenerator(
             name = "company_sequence",
-            sequenceName ="company_sequence",
+            sequenceName = "company_sequence",
             allocationSize = 1
     )
-    @GeneratedValue (
+    @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "company_sequence"
     )
+
     private Long id;
     private String compName;
     private String compEmail;
