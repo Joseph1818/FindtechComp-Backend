@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface CompanyRepository extends JpaRepository <Company, Long> {
     // Business logic to find the user by email
     @Query("SELECT s FROM Company s where s.compEmail =?1")
-    Optional <Company> findCompanyByCompEmail(String compAdress);
+    Optional <Company> findCompanyByCompEmail(String compEmail);
 }

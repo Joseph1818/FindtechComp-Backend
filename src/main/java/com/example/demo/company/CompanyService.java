@@ -44,4 +44,13 @@ public class CompanyService {
        companyRepository.deleteById(companyId);
       return true;
     }
+
+    public ApiResponse updateCompany(Long companyId, Company updatedCompany) {
+        if (!companyRepository.existsById(companyId)) {
+            throw new IllegalStateException("Company with id " + companyId + " does not exist");
+        }
+        updatedCompany.setId(companyId);
+        companyRepository.save(updatedCompany);
+        return new ApiResponse(true, "Company updated successfully");
+    }
 }
